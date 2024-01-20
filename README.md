@@ -3,3 +3,7 @@
 ## Clase 1:
 
 Introduccion y repaso desde cero de JavaScript
+
+-Java desde cero
+-Clases y constructores
+-Herencia y prototipos
