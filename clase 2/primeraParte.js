@@ -34,6 +34,18 @@ Clase 2 - Funcionalidades de ES
 
     import productosMarolio from "./datos.js";
 
+    let nombreProductos = [];
+
+    productosMarolio.forEach(item => {
+        nombreProductos.push(item.nombre);
+    });
+
+    console.log(nombreProductos);
+
+    let nuevoProducto = {id: 4, nombre: "Aceite", precio: 300};
+
+    let productosMarolioActualizado = productosMarolio.push(nuevoProducto);
+
     console.log(productosMarolio);
 
 //Exponenciacion **
