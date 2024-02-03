@@ -40,3 +40,19 @@ Manejo de archivos y NPM
 - Manejo de datos complejos
 
 - Ejemplo de desafio 2
+
+- Node y NPM
+
+- Modulos nativos de Node
+
+- NPM: Manjeo de paquetes de terceros
+
+- Pasos para instalar una dependencia
+
+- Instalaciones globales vs locales
+
+- Versionado de dependencias
+
+- Politivas de actualizacion de dependencias
+
+- Importar Modulos propios

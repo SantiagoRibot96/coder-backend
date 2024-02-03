@@ -16,5 +16,11 @@
     "apellido": "winki",
     "edad": 18,
     "curso": "Backend"
+  },
+  {
+    "nombre": "tinki",
+    "apellido": "winki",
+    "edad": 18,
+    "curso": "Backend"
   }
 ]
