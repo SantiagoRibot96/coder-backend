@@ -1,0 +1,20 @@
+[
+  {
+    "nombre": "pepe",
+    "apellido": "argento",
+    "edad": 50,
+    "curso": "Backend"
+  },
+  {
+    "nombre": "tinki",
+    "apellido": "winki",
+    "edad": 18,
+    "curso": "Backend"
+  },
+  {
+    "nombre": "tinki",
+    "apellido": "winki",
+    "edad": 18,
+    "curso": "Backend"
+  }
+]

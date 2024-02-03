@@ -26,3 +26,17 @@ Repaso de lo que trae ES
 - Callback
 - Promesas
 - APIs
+
+## Clase 3:
+
+Manejo de archivos y NPM
+
+- File System
+
+- Manejo de archivos con callback
+
+- Manejo de archivos con promesas
+
+- Manejo de datos complejos
+
+- Ejemplo de desafio 2
