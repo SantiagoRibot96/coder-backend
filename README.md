@@ -56,3 +56,14 @@ Manejo de archivos y NPM
 - Politivas de actualizacion de dependencias
 
 - Importar Modulos propios
+
+## Clase 4:
+
+Servidores WEB y EXPRESS
+
+- Que es un servidor
+- Protocolo HTTP
+- Modulo nativo HTTP
+- Express JS (Framework)
+- Object request
+- nodemon
