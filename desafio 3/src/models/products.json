@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Harina",
+    "description": "Haria 000 blancaflor",
+    "price": 1500,
+    "thumbnail": "https://Harina",
+    "code": "ABC001",
+    "stock": 10
+  },
+  {
+    "id": 2,
+    "title": "Miel",
+    "description": "Miel pura de abeja",
+    "price": 1200,
+    "thumbnail": "https://Miel",
+    "code": "ABC002",
+    "stock": 12
+  },
+  {
+    "id": 3,
+    "title": "Arroz",
+    "description": "Arroz grano largo",
+    "price": 100,
+    "thumbnail": "https://Arroz",
+    "code": "ABC003",
+    "stock": 5
+  },
+  {
+    "id": 4,
+    "title": "Papa",
+    "description": "Papa blanca",
+    "price": 500,
+    "thumbnail": "https://Papa",
+    "code": "ABC004",
+    "stock": 17
+  },
+  {
+    "id": 5,
+    "title": "Espinaca",
+    "description": "Espinaca congelada Granja del Sol",
+    "price": 150,
+    "thumbnail": "https://Espinaca",
+    "code": "ABC005",
+    "stock": 15
+  },
+  {
+    "id": 6,
+    "title": "Lentejas",
+    "description": "Lentejas grandes enlatadas",
+    "price": 1700,
+    "thumbnail": "https://Lentejas",
+    "code": "ABC006",
+    "stock": 20
+  },
+  {
+    "id": 7,
+    "title": "Yerba",
+    "description": "Yerba playadito",
+    "price": 200,
+    "thumbnail": "https://Yerba",
+    "code": "ABC007",
+    "stock": 4
+  },
+  {
+    "id": 8,
+    "title": "Helado",
+    "description": "Helado casata",
+    "price": 2000,
+    "thumbnail": "https://Helado",
+    "code": "ABC008",
+    "stock": 5
+  },
+  {
+    "id": 9,
+    "title": "Arvejas",
+    "description": "Arvejas en caja",
+    "price": 1800,
+    "thumbnail": "https://Arvejas",
+    "code": "ABC009",
+    "stock": 8
+  },
+  {
+    "id": 10,
+    "title": "Porotos",
+    "description": "Poroto negro en lata",
+    "price": 2000,
+    "thumbnail": "https://Porotoas",
+    "code": "ABC010",
+    "stock": 3
+  }
+]
