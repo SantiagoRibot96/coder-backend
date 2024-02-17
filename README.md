@@ -77,3 +77,8 @@ Servidores WEB y EXPRESS
 - Middleware
 - Servicios de archivos estaticos
 - Multer
+- Motores de plantillas
+- Handlebars
+- Estructuras, condicionales y ciclos
+- Router de Handlebars
+- JS y CSS cliente
