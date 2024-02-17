@@ -70,3 +70,10 @@ Servidores WEB y EXPRESS
 - API rest
 - Peticiones
 - Postman
+
+## Clase 5
+
+- Express router
+- Middleware
+- Servicios de archivos estaticos
+- Multer
