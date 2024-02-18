@@ -1,0 +1,32 @@
+<h1>Hola, estoy desde Express-Handlebars</h1>
+<p>Mi nombre es {{usuario.nombre}}</p>
+<p>Mi apellido es {{usuario.apellido}}</p>
+
+{{!-- Usamos condicionales --}}
+
+{{#if usuario.mayorEdad}}{{!-- Solo analiza booleanos! --}}
+    <p>Es mayor de edad</p>
+{{else}}
+    <p>Es menor de edad</p>
+{{/if}}
+
+{{!-- Usamos ciclos --}}
+
+{{!-- <h2>Estos son los productos</h2>
+
+{{#each productos}}
+    <div>
+        <h2>nombre: {{this.nombre}}</h2>
+        <p>precio: {{this.precio}}</p>
+        <p>descipcion: {{this.descripcion}}</p>
+        <button>Comprar</button>
+    </div>
+{{/each}} --}}
+
+<h2>Estos son los productos</h2>
+
+{{>cards}}
+
+{{>footer}}
+
+<script src="js/indes.js"></script>
