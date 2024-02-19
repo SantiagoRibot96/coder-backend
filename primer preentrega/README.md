@@ -10,7 +10,7 @@
 - GET http://localhost:8080/api/products/:pid : obtain the product of the pid given. If it doesn't exists, returns an error
 - POST http://localhost:8080/api/products : create a new product. Be aware: The codes have to be unique and the information complete. The object should be like this:
 
-  {
+  {  
     "title": "Atun",  
     "description": "Atun enlatado en aceite",  
     "category": "Enlatados",  
@@ -22,14 +22,14 @@
 
 - PUT http://localhost:8080/api/products/:pid : change any propierty of the pid product. You have to sent a complete object, with an unique code. for example:
 
-  {
-    "title": "Atun",
-    "description": "Atun enlatado en aceite",
-    "category": "Almacen",
-    "price": 3500,
-    "thumbnail": "https://Atun",
-    "code": "ABC023",
-    "stock": 10
+  {  
+    "title": "Atun",  
+    "description": "Atun enlatado en aceite",  
+    "category": "Almacen",  
+    "price": 3500,  
+    "thumbnail": "https://Atun",  
+    "code": "ABC023",  
+    "stock": 10  
   }
 
 - DELETE http://localhost:8080/api/products/:pid : deletes the product of the pid given
