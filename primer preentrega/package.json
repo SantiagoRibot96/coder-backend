@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "name": "deploy",
+  "description": "ProductManager es una clase que cuenta con tres metodos:\r - getProducts(): Obtiene los productos existentes;\r - addProduct(titulo, descripcion, precio, url, codigo, stock): Agrega un nuevo producto con los parametros pasados. En caso de que falte alguno, arroja error. En caso que el codigo se repita con otro producto, tambien arroja error. A cada producto le asigna un Id correlativo. Retorna true o false dependiendo si pudo ejecutar la operacion;\r - getProducts(id): Busca dentro de los productos existentes uno con el Id solicitado. En caso de encontrarlo retorna el producto, en caso contrario retorna un error.\r - readProductsFromFile(): Busca dentro del archivo en this.path (Direccion a cargar en la instanciacion de la clase)\r - saveProductsToFile(prod): Guarda dentro del archivo en this.path\r - deleteProduct(id): Borra el producto con el id correspondiente\r - upgradeProduct(id, newProduct): Actualiza un producto del id correspondiente. NewProduct debe ser un objeto completo.",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
