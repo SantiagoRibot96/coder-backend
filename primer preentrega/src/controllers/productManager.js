@@ -1,5 +1,4 @@
-import { validateCode, arrayCompleted } from "../functions.js";
-import * as fs from "fs";
+import { validateCode, arrayCompleted, getCurrentID, readFromFile, saveToFile } from "../functions.js";
 
 export class ProductManager {
 
@@ -7,38 +6,6 @@ export class ProductManager {
         this.products = [];
         this.path = path;
         this.currentId = 1;
-    }
-
-    async readProductsFromFile() {
-        try {
-            const cont = await fs.promises.readFile(this.path, "utf-8");
-
-            return JSON.parse(cont);
-        } catch (error) {
-            await fs.promises.writeFile(this.path, JSON.stringify(this.products, null, 2));
-
-            try {
-                const cont = await fs.promises.readFile(this.path, "utf-8");
-
-                return JSON.parse(cont);
-            } catch (error) {
-                console.log(`No se pudieron traer los productos al programa ${error}`);
-
-                return false;
-            }
-        }
-    }
-
-    async saveProductsToFile(prod) {
-        try {
-            await fs.promises.writeFile(this.path, JSON.stringify(prod, null, 2));
-
-            return true;
-        } catch (error) {
-            console.log(`No se pudieron guardar los productos al archivo ${error}`);
-
-            return false;
-        }
     }
 
     async deleteProduct(id) {
@@ -51,7 +18,7 @@ export class ProductManager {
 
             this.products = prod;
 
-            await this.saveProductsToFile(this.products);
+            await saveToFile(this.path, this.products);
             
             return true;
         }else {
@@ -65,7 +32,7 @@ export class ProductManager {
         let prod = await this.getProducts();
         let copyProd = prod.slice();
 
-        let index = prod.findIndex((item) => item.id === id);
+        const index = prod.findIndex((item) => item.id === id);
 
         copyProd.splice(index, 1);
 
@@ -77,7 +44,7 @@ export class ProductManager {
 
                     this.products = prod;
 
-                    await this.saveProductsToFile(this.products);
+                    await saveToFile(this.path, this.products);
 
                     return true;
                 }else {
@@ -94,14 +61,14 @@ export class ProductManager {
     }
 
     async getProducts() {
-        const prod = await this.readProductsFromFile();
+        const prod = await readFromFile(this.path, []);
         this.products = prod;
         return this.products;
     }
 
     async addProduct(newTitle, newDescription, newCategory, newPrice, newThumbnail, newCode, newStock) {
         let prod = await this.getProducts();
-        await this.getCurrentID();
+        this.currentId = getCurrentID(prod);
 
         if(validateCode(prod, newCode)) {
             if(arrayCompleted(newTitle, newDescription, newCategory, newPrice, newThumbnail, newCode, newStock)) {
@@ -120,7 +87,7 @@ export class ProductManager {
                 prod.push(newProduct);
                 this.products = prod;
 
-                await this.saveProductsToFile(this.products);
+                await saveToFile(this.path, this.products);
 
                 return true;
             }else {
@@ -135,7 +102,7 @@ export class ProductManager {
 
     async getProductById(id) {
         let productSearched;
-        const prod = await this.readProductsFromFile();
+        const prod = await readFromFile(this.path, []);
 
         prod.forEach(item => {
             if(item.id === id){
@@ -148,22 +115,6 @@ export class ProductManager {
         }else {
             console.log("Producto no encontrado");
             return false;
-        }
-    }
-
-    async getCurrentID() {
-        let prevId = [];
-
-        const prod = await this.readProductsFromFile();
-
-        prod.forEach(item => {
-            prevId.push(item.id);
-        });
-
-        if(!prevId[0]){
-            this.currentId = 1;
-        }else{
-            this.currentId = Math.max(...prevId)+1;
         }
     }
 }
