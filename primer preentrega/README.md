@@ -1,7 +1,7 @@
 # Entregas de Ribot Santiago
 
-1) npm install: Install all dependencies needed to run the project
-2) npm run dev: This will start nodemmon in app.js
+1) `npm install`: Install all dependencies needed to run the project
+2) `npm run dev`: This will start nodemmon in app.js
 3) for the requests Postman is being used
 
 ## Routes:
