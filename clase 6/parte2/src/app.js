@@ -1,50 +1,44 @@
 /* 
-1) instalar el modulo:                  npm i socket.io
-2) importar el modulo:                  const socket = require("socket.io");
-3) guardar una referencia del servidor: const httpServer = ....
-4) creamos el socket:                   const io = socket(httpServer)
-5) configuramos el socket:              io.on("connection", () => {...}
-6) en este caso, desde el index.hbs:    <script src="https://cdn.socket.io/4.7.3/socket.io.min.js"></script>
-7) instanciamos en main.js:             const socket = io();
+Chat
 */
 
-const express = require("express");
+//Imports
+import express from "express";
+import exphbs from "express-handlebars";
+import viewsRouter from "./routes/views.router.js";
+import { Server } from "socket.io";
+
+//Constantes de express
 const app = express();
 const PUERTO = 8080;
-const exphbs = require("express-handlebars");
-const socket = require("socket.io");
-const viewsRouter = require("./routes/views.router.js")
 
+//Middleware para carpeta public
 app.use(express.static("./src/public"));
 
+//Configuracion de handlebars
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 app.set("views", "./src/views");
 
+//Rutas
 app.use("/", viewsRouter);
 
+//Listen
 const httpServer = app.listen(PUERTO, () => {
     console.log(`Escuchando en el puerto ${PUERTO}`);
 });
 
-const io = socket(httpServer);
+//Websocket
+const io = new Server(httpServer);
 
-const usuarios = [
-    {id: 1, nombre: "lionel", apellido: "messi"},
-    {id: 2, nombre: "cristiano", apellido: "ronaldo"},
-    {id: 3, nombre: "neymar", apellido: "jr"},
-    {id: 4, nombre: "tinki winki", apellido: "teletubie"},
-    {id: 5, nombre: "lala", apellido: "teletubie"},
-    {id: 6, nombre: "dipsy", apellido: "teletubie"},
-    {id: 7, nombre: "poo", apellido: "teletubie"}
-];
+let messages = [];
 
 io.on("connection", (socket) => {
     console.log(`Se conecto un nuevo cliente`);
 
-    socket.on("mensaje", (data) => {
-        console.log(data);
-    });
+    socket.on("message", (data) => {
+        messages.push(data);
 
-    socket.emit("respuesta", usuarios);
+        io.emit("messagesLogs", messages);
+    });
 });

@@ -1,18 +1,36 @@
 const socket = io();
 
-// Para enviar mensajes del cliente al servidor, utilizamos emit
-// Para escuchar mensajes uso on.
+let user;
 
-socket.emit("mensaje", "Soy un cliente nuevo");
+const chatBox = document.getElementById("chatBox");
 
-socket.on("respuesta", (data) => {
-    const listaUsuarios = document.getElementById("lista-usuarios");
+Swal.fire({
+    title: "Identifiquese",
+    input: "text",
+    text: "Ingrese su nombre para identificarse",
+    inputValidator: (value) => {
+        return !value && "Necesitas escribir un nombre para continuar"
+    },
+    allowOutsideClick: false
+}).then(result => {
+    user = result.value;
+    console.log(user);
+});
 
-    listaUsuarios.innerHTML = "";
+chatBox.addEventListener("keyup", (event) => {
+    if(event.key === "Enter"){
+        if(chatBox.value.trim().length > 0){
+            socket.emit("message", {user: user, message: chatBox.value});
+            chatBox.value = "";
+        }
+    }
+})
+
+socket.on("messagesLogs", (data) => {
+    let log = document.getElementById("messagesLogs");
+    let mensajes = "";
 
     data.forEach(item => {
-        listaUsuarios.innerHTML += `<li>${item.nombre} - ${item.apellido}</li>`
+        mensajes = mensajes + `${item.user} dice: ${item.message} <br>`;
     });
-
-    socket.disconnect();
 });
