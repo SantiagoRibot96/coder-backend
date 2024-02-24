@@ -87,4 +87,6 @@ Servidores WEB y EXPRESS
 
 Websocket
 
-- 
+- repaso de DOM
+- repaso de handlebars
+- programa basico
