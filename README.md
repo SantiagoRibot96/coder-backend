@@ -82,3 +82,9 @@ Servidores WEB y EXPRESS
 - Estructuras, condicionales y ciclos
 - Router de Handlebars
 - JS y CSS cliente
+
+## Clase 6
+
+Websocket
+
+- 
