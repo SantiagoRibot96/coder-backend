@@ -1,0 +1,24 @@
+h1 {
+    color: red;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    border: 0.2rem solid #58696b;
+    background-color: #e7fdff;
+    align-items: center;
+}
+
+#productList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

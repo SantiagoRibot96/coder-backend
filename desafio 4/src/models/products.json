@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Atun",
+    "description": "Atun enlatado en aceite",
+    "category": "Enlatados",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC001",
+    "stock": 3
+  },
+  {
+    "id": 3,
+    "title": "Atun",
+    "description": "Atun enlatado en agua bajo en sodio",
+    "category": "Almacen",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC003",
+    "stock": 8
+  },
+  {
+    "id": 3,
+    "title": "Atun",
+    "description": "Atun enlatado en agua bajo en sodio",
+    "category": "Almacen",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC004",
+    "stock": 8
+  },
+  {
+    "id": 4,
+    "title": "Atun",
+    "description": "Atun enlatado en aceite",
+    "category": "Enlatados",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC005",
+    "stock": 3
+  },
+  {
+    "id": 5,
+    "title": "Atun",
+    "description": "Atun enlatado en aceite",
+    "category": "Enlatados",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC006",
+    "stock": 3
+  },
+  {
+    "id": 6,
+    "title": "Atun",
+    "description": "Atun enlatado en aceite",
+    "category": "Enlatados",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC007",
+    "stock": 3
+  },
+  {
+    "id": 7,
+    "title": "Atun",
+    "description": "Atun enlatado en aceite",
+    "category": "Enlatados",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC008",
+    "stock": 3
+  },
+  {
+    "id": 8,
+    "title": "Atun",
+    "description": "Atun enlatado en aceite",
+    "category": "Enlatados",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC009",
+    "stock": 3
+  },
+  {
+    "id": 9,
+    "title": "Atun",
+    "description": "Atun enlatado en aceite",
+    "category": "Enlatados",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC019",
+    "stock": 3
+  },
+  {
+    "id": 10,
+    "title": "Atun",
+    "description": "Atun enlatado en aceite",
+    "category": "Enlatados",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC020",
+    "stock": 3
+  },
+  {
+    "id": 11,
+    "title": "Atun",
+    "description": "Atun enlatado en aceite",
+    "category": "Enlatados",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC021",
+    "stock": 3
+  },
+  {
+    "id": 12,
+    "title": "Atun",
+    "description": "Atun enlatado en aceite",
+    "category": "Enlatados",
+    "price": 2000,
+    "thumbnail": "https://Atun",
+    "code": "ABC022",
+    "stock": 3
+  }
+]
