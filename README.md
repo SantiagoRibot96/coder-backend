@@ -91,3 +91,25 @@ Websocket
 - repaso de handlebars
 - programa basico
 - chat con websocket
+
+## Clase 7
+
+MongoDB
+
+- Instalamos MongoDB y Mongosh
+- mongosh: Abre la consola
+- show dbs: Muestra las bases de datos
+- use nombreDB: Crea una nueva DB y se posiciona en ella. Si ya existe, solo se posiciona. La base "test" es una suerte de root.
+- db.createCollection("nombreCollection")
+- show collections: Muestra las colecciones de una db
+- db.nombreCollection.drop(): Borra la coleccion
+- db.nombreDB.drop(): Borra la DB. Tambien se puede usar db.dropDatabase() si estas dentro de la db a eliminar
+- db.nombreCollection.insertOne({"clave": "valor", "clave": "valor", "clave": "valor"}): Crea un nuevo objeto en la coleccion. Le asigna un ID. (Se pega con click derecho)
+- db.nombreCollection.find(): Muestra los objetos de la coleccion
+- db.nombreCollection.insertMany([{objeto1}, {objeto2}, {objeto3}]): Inserta varios objetos a la vez.
+- db.nombreCollection.findOne({"clave": "valor"}): Devuelve el primer objeto que cumple con la condicion
+- db.nombreCollection.find({"clave": "valor"}): Devuelve todos los objetos con esa condicion
+- db.nombreCollection.estimatedDocumentCount(): Hace un estimativo segun la metadata de la db
+- db.nombreCollection.countDocuments(): Cuenta uno a uno los objetos de la base
+- db.nombreCollection.find({$op: [{"clave":"Valor"},{"clave":"valor"}]}): Los operadores pueden ser: and, or, it(coincide con valores que son menores a un valor especificado), ite(coincide con valores menores o iguales), gt(coincide con valores mayores), gte(coincide con valores mayores o iguales), ne(coincide con valores que no son iguales), eq(coincide con valores que son iguales), exists(existe el campo), in(selecciona los documentos en un array), nin(coincide con ninguno de los valores), size(coincide con el numero de elementos), all(coincide con todos los valores definidos dentro de un array), elemMatch(coincide con algun valor dentro del query)
+- 
