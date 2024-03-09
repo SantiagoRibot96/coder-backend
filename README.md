@@ -112,4 +112,12 @@ MongoDB
 - db.nombreCollection.estimatedDocumentCount(): Hace un estimativo segun la metadata de la db
 - db.nombreCollection.countDocuments(): Cuenta uno a uno los objetos de la base
 - db.nombreCollection.find({$op: [{"clave":"Valor"},{"clave":"valor"}]}): Los operadores pueden ser: and, or, it(coincide con valores que son menores a un valor especificado), ite(coincide con valores menores o iguales), gt(coincide con valores mayores), gte(coincide con valores mayores o iguales), ne(coincide con valores que no son iguales), eq(coincide con valores que son iguales), exists(existe el campo), in(selecciona los documentos en un array), nin(coincide con ninguno de los valores), size(coincide con el numero de elementos), all(coincide con todos los valores definidos dentro de un array), elemMatch(coincide con algun valor dentro del query)
-- 
+
+## Clase 8
+
+- Clientes de base de datos
+- MongoDB Compass
+- MongoDB Atlas
+- DBaas (Database as a service)
+- Configuracion e instalacion de Mongoose
+- CRUD en nuestr APP
