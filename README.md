@@ -126,3 +126,6 @@ MongoDB
 - Teoria de la indexacion
 - Manejo de Populations en MongoDB
 - Middleware PRE
+- MongoDB Avanzado
+- Paginacion
+- Agregaciones
