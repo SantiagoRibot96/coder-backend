@@ -121,3 +121,8 @@ MongoDB
 - DBaas (Database as a service)
 - Configuracion e instalacion de Mongoose
 - CRUD en nuestr APP
+
+## Clase 9
+- Teoria de la indexacion
+- Manejo de Populations en MongoDB
+- Middleware PRE
