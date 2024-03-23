@@ -129,3 +129,9 @@ MongoDB
 - MongoDB Avanzado
 - Paginacion
 - Agregaciones
+
+## Clase 10
+- Cookies
+- Set, get, clear cookies
+- Cookies firmadas
+- Session storage
