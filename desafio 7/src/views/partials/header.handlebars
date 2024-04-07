@@ -1,0 +1,18 @@
+<header>
+    <a href="/" class="logo"> Productos </a>
+
+    <nav>
+        <ul>
+            <li><a href="/chat"> Hable con un vendedor </a></li>
+            <li><a href="/carts/660dc1544333660216c50ddd"> Mi carrito </a></li>
+            {{#if userName}}
+                <li><a href="/profile">Mi Perfil</a></li>
+            {{/if}}
+            {{#if userName}}
+                    <li><a href="/api/sessions/logout"> Logout </a></li>
+            {{else}}
+                    <li><a href="/login"> Login </a></li>
+            {{/if}}
+        </ul>
+    </nav>
+</header>

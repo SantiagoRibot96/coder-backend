@@ -1,87 +1,83 @@
 import express from "express";
-import { newProductList } from "../app.js";
-import { io } from "../init.js";
-import { ProductModel } from "../models/product.model.js";
+import { newCartList, newProductList } from "../app.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 5;
-    const sort = {};
-    const sortValue = req.query.sort;
-    const query = {};
-    const queryParams = req.query.query || "";
+router.get("/", (req, res) => {
+    res.redirect("/products");
+});
 
-    let nextLink;
-    let prevLink;
-    let firstPage;
-
-    if (sortValue === "desc") {
-        sort.price = -1;
-    } else if (sortValue === "asc") {
-        sort.price = 1;
-    }
-
-    if (queryParams) {
-        const key = queryParams.split(",")[0];
-        let value = queryParams.split(",")[1];
-
-    if (!isNaN(Number(value))) {
-        value = Number(value);
-    }
-
-    query[key] = value;
-    }
-
+router.get("/products", async (req, res) => {
     try {
-        const productList = await ProductModel.paginate(query, {
-            page,
+        const { limit = 8, page = 1, sort, query } = req.query;
+        let firstPage = false;
+
+        const products = await newProductList.getProducts({
+            limit: parseInt(limit),
+            page: parseInt(page),
             sort,
-            limit,
-            lean: true
+            query
         });
 
-        if(productList.hasNextPage){
-            nextLink = `/?page=${productList.nextPage}&limit=${limit}&sort=${sortValue}`;
-        }else{
-            nextLink = null;
-        }
-
-        if(productList.hasPrevPage){
-            prevLink = `/?page=${productList.prevPage}&limit=${limit}&sort=${sortValue}`;
-        }else{
-            prevLink = null;
-        }
-
-        if(productList.page === 1){
+        if(!products.hasPrevPage){
             firstPage = true;
-        }else{
-            firstPage = false;
         }
-
+        
         res.render("home", {
             status: "success",
-            payload: productList.docs,
-            hasPrevPage: productList.hasPrevPage,
-            hasNextPage: productList.hasNextPage,
-            prevPage: productList.prevPage,
-            nextPage: productList.nextPage,
-            currentPage: productList.page,
-            totalPages: productList.totalPages,
-            nextLink,
-            prevLink,
+            payload: products.docs,
+            hasPrevPage: products.hasPrevPage,
+            hasNextPage: products.hasNextPage,
+            prevPage: products.prevPage,
+            nextPage: products.nextPage,
+            currentPage: products.page,
+            totalPages: products.totalPages,
+            nextLink: products.hasNextPage ? products.nextPage : null,
+            prevLink: products.hasPrevPage ? products.prevPage : null,
             firstPage,
             limit
         });
 
     } catch (error) {
         console.log(error);
+        res.status(500).json({
+            status: "error",
+            error: "Error interno del servidor"
+        });
     }
 });
 
 router.get("/chat", (req, res) => {
     res.render("chat");
 });
+
+router.get("/carts/:cid", async (req, res) => {
+    const cid = req.params.cid;
+
+    try {
+        const cart = await newCartList.getCartById(cid);
+
+        if(!cart){
+            console.log("No existe carrito con ese id");
+            return res.status(404).json({
+                status: "Failed",
+                error: "No se encontro el carrito",
+            });
+        }
+
+        const products = cart.products.map(item => ({
+            product: item.product.toObject(),
+            quantity: item.quantity
+        }));
+
+        res.render("carts", {productos: products});
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            status: "Failed",
+            error: "Error interno del servidor", 
+        });
+    }
+})
 
 export default router;

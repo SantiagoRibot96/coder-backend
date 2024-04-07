@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { newCartList } from "../app.js";
+import { CartManager } from "../controllers/cartManager.js";
 
 const router = Router();
 
@@ -48,5 +49,61 @@ router.delete("/api/carts/:cid/product/:pid", async (req, res) => {
     }
 });
 
+router.put("/api/carts/:cid", async (req, res) => {
+    const cid = req.params.cid;
+    const updatedProducts = req.body;
+
+    try {
+        const updatedCart = await newCartList.updateCart(cid, updatedProducts);
+        res.json({
+            status: "Success",
+            message: `Carrito ${cid} actualizado con exito`,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            status: "Failed",
+            error: "Error interno del servidor",
+        });
+    }
+});
+
+router.put("/api/carts/:cid/product/:pid", async (req, res) => {
+    const cid = req.params.cid;
+    const pid = req.params.pid;
+    const newQuantity = req.body.quantity;
+
+    try {
+        const updatedCart = await newCartList.updateProduct(cid, pid, newQuantity);
+        res.json({
+            status: "Success",
+            message: `Cantidad de producto ${pid} actualizada en carrito ${cid}`,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            status: "Failed",
+            error: "Error interno del servidor",
+        });
+    }
+});
+
+router.delete("/api/carts/:cid", async (req, res) => {
+    const cid = req.params.cid;
+
+    try {
+        const updatedCart = await newCartList.deleteCart(cid);
+        res.json({
+            status: "Success",
+            message: `Carrito ${cid} eliminado con exito`,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            status: "Failed",
+            error: "Error interno del servidor",
+        });
+    }
+});
 
 export default router

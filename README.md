@@ -135,3 +135,9 @@ MongoDB
 - Set, get, clear cookies
 - Cookies firmadas
 - Session storage
+
+## Clase 11
+- Bcrypt (hasheo de passwords)
+- Passport - Estrategias de autenticacion
+- Metodos de autenticacion (google, github, JSON web token)
+- Autenticacion vs autorizacion
