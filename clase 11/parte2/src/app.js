@@ -2,6 +2,9 @@
 1) Muchos pasos para crear la app en github (Ver diapo)
 2) npm i passport-github2
 3) import en passport
+
+JsonWebToken
+1) npm i jsoonwebtoken
 */
 
 import express from "express";

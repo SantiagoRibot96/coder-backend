@@ -4,6 +4,7 @@ import passport from "passport";
 import UserModel from "../models/user.model.js";
 import { createHash, isValidPassword } from "../utils/hashbcrypt.js";
 import { read } from "fs";
+import generateToken from "../utils/jsonwebtoken.js";
 
 const router = express.Router(); 
 //Registro: 
@@ -66,70 +67,126 @@ const router = express.Router();
 
 //Version para Passport
 
-router.post("/", passport.authenticate("register", {
-    failureRedirect: "/api/sessions/failedregister"
-}), async (req, res) => {
-    if(!req.user) return res.status(400).send("Credenciales invalidas");
+// router.post("/", passport.authenticate("register", {
+//     failureRedirect: "/api/sessions/failedregister"
+// }), async (req, res) => {
+//     if(!req.user) return res.status(400).send("Credenciales invalidas");
 
-    req.session.user = {
-        fist_name: req.user.fist_name,
-        last_name: req.user.last_name,
-        age: req.user.age,
-        email: req.user.email
+//     req.session.user = {
+//         fist_name: req.user.fist_name,
+//         last_name: req.user.last_name,
+//         age: req.user.age,
+//         email: req.user.email
+//     }
+
+//     req.session.login = true;
+
+//     res.redirect("/profile");
+// });
+
+// router.get("/failedregister", (req, res) => {
+//     res.send("Registro fallido");
+// });
+
+// router.post("/login", passport.authenticate("login", {
+//     failureRedirect: "/api/sessions/faillogin"
+// }), async (req, res) => {
+//     if(!req.user) return res.status(400).send("Credenciales invalidas");
+
+//     req.session.user = {
+//         fist_name: req.user.fist_name,
+//         last_name: req.user.last_name,
+//         age: req.user.age,
+//         email: req.user.email
+//     }
+
+//     req.session.login = true;
+
+//     res.redirect("/profile");
+// });
+
+// router.get("/faillogin", (req, res) => {
+//     res.send("Fallo al iniciar sesion");
+// });
+
+// //Logout
+
+// router.get("/logout", (req, res) => {
+//     if(req.session.login) {
+//         req.session.destroy();
+//     }
+//     res.redirect("/login");
+// });
+
+// //Version para Github
+
+// router.get("/github", passport.authenticate("github", {
+//     scope: ["user: email"]
+// }), async (req, res) => {});
+
+// router.get("/githubcallback", passport.authenticate("github", {
+//     failureRedirect: "/login"
+// }), async (req, res) => {
+//     req.session.user = req.user;
+//     req.session.login = true;
+//     res.redirect("/profile");
+// });
+
+//Version JWT
+router.post("/register", async (req, res) => {
+    const {first_name, last_name, email, password, age} = req.body;
+
+    try {
+        const existeUsuario = await UserModel.findOne({email});
+
+        if(existeUsuario){
+            return res.status(400).send("Usuario ya existe");
+        }
+
+        const nuevoUsuario = await UserModel.create({first_name, last_name, email, password: createHash(password), age});
+
+        const token = generateToken({id: nuevoUsuario._id});
+
+        res.status(200).send({
+            status: "success",
+            message: "Usuario creado con exito",
+            token
+        });
+
+    } catch (error) {
+        res.status(500).send("Error interno del servidor");
     }
-
-    req.session.login = true;
-
-    res.redirect("/profile");
 });
 
-router.get("/failedregister", (req, res) => {
-    res.send("Registro fallido");
-});
+router.post("/login", async (req, res) => {
+    const {email, password} = req.body;
 
-router.post("/login", passport.authenticate("login", {
-    failureRedirect: "/api/sessions/faillogin"
-}), async (req, res) => {
-    if(!req.user) return res.status(400).send("Credenciales invalidas");
+    try {
+        const usuario = await UserModel.findOne({email});
 
-    req.session.user = {
-        fist_name: req.user.fist_name,
-        last_name: req.user.last_name,
-        age: req.user.age,
-        email: req.user.email
+        if(!usurio){
+            return res.status(400).send("Usuario no existe");
+        }
+
+        if(!isValidPassword(password, usuario)){
+            return res.status(401).send("Credenciales invalidas");
+        }
+
+        const token = generateToken({
+            first_name: usuario.first_name,
+            last_name: usuario.last_name,
+            email: usuario.email,
+            age: usuario.age
+        });
+
+        res.status(200).send({
+            status: "success",
+            message: "Usuario creado con exito",
+            token
+        });
+    } catch (error) {
+        res.status(500).send("Error interno del servidor");
     }
-
-    req.session.login = true;
-
-    res.redirect("/profile");
 });
-
-router.get("/faillogin", (req, res) => {
-    res.send("Fallo al iniciar sesion");
-});
-
-//Logout
-
-router.get("/logout", (req, res) => {
-    if(req.session.login) {
-        req.session.destroy();
-    }
-    res.redirect("/login");
-});
-
-//Version para Github
-
-router.get("/github", passport.authenticate("github", {
-    scope: ["user: email"]
-}), async (req, res) => {});
-
-router.get("/githubcallback", passport.authenticate("github", {
-    failureRedirect: "/login"
-}), async (req, res) => {
-    req.session.user = req.user;
-    req.session.login = true;
-    res.redirect("/profile");
-});
-
 
 export default router; 

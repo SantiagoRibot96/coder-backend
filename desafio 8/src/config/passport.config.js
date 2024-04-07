@@ -11,18 +11,23 @@ const initializePassport = () => {
         usernameField: "email"
     }, async (req, username, password, done) => {
         const {first_name, last_name, email, age} = req.body;
-
+        
         try {
-            let existeUsuario = UserModel.findOne({email: email});
+            let rol = "Usuario";
 
-            if(existeUsuario) return done(null, false);
+            if(email === "adminCoder@coder.com") rol = "Administrador";
+            
+            let user = await UserModel.findOne({email});
 
+            if(user) return done(null, false);
+            
             let newUser = {
                 first_name,
                 last_name,
                 email,
                 age,
-                password: createHash(password)
+                password: createHash(password),
+                rol,
             }
 
             let result = await UserModel.create(newUser);
@@ -36,7 +41,7 @@ const initializePassport = () => {
         usernameField: "email"
     }, async (email, password, done) => {
         try {
-            const user = await UserModel.findOne({email: email});
+            const user = await UserModel.findOne({email});
 
             if(!user){
                 console.log("Usuario no existe");
@@ -74,7 +79,8 @@ const initializePassport = () => {
                     last_name: "unknown",
                     age: 36,
                     email: profile._json.email,
-                    password: "imposibleDeHackear"
+                    password: "imposibleDeHackear",
+                    rol: "Usuario"
                 }
                 
                 let result = await UserModel.create(newUser);
