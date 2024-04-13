@@ -141,3 +141,9 @@ MongoDB
 - Passport - Estrategias de autenticacion
 - Metodos de autenticacion (google, github, JSON web token)
 - Autenticacion vs autorizacion
+
+## Clase 12
+- JWT con localStorage
+- JWT con cookies
+- Passport avanzado y JWT
+- Router avanzado
