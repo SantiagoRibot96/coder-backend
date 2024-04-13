@@ -16,4 +16,13 @@ const passportCall = (strategy) => {
     }
 }
 
-module.exports = {passportCall}
+const authorization = (role) => {
+    return async (req, res, next) => {
+        if(req.user.role !== role) {
+            return res.status(403).send({message: "No tenes permiso para ingresar a esta seccion"});
+        }
+        next();
+    }
+}
+
+module.exports = {passportCall, authorization}

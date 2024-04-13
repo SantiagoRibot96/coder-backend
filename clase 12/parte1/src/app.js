@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const initializePassport = require("./config/passport.config.js");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
-const { passportCall } = require("./utils/util.js");
+const { passportCall, authorization } = require("./utils/util.js");
 
 const app = express();
 const PORT = 8080;
@@ -22,7 +22,10 @@ app.post("/login", (req, res) => {
     const {usuario, pass} = req.body;
 
     if(usuario === "tinki" && pass === "winki") {
-        let altoketoken = jwt.sign({usuario, pass}, "coderhouse", {expiresIn:  "24h"}); //La contraseña no deberia guardarse en el token, es para prueba nada mas
+        //let altoketoken = jwt.sign({usuario, pass}, "coderhouse", {expiresIn:  "24h"}); //La contraseña no deberia guardarse en el token, es para prueba nada mas
+        // res.send({message: "login exitoso", altoketoken});
+
+        let altoketoken = jwt.sign({usuario, pass, role: "user"}, "coderhouse", {expiresIn:  "24h"});
 
         res.cookie("coderCookieToken", altoketoken, {maxAge: 60*60*1000, httpOnly:true}).send({message: "Login exitoso"});
     }else {
@@ -34,7 +37,7 @@ app.post("/login", (req, res) => {
 //     res.send(req.user);
 // });
 
-app.get("/current", passportCall("jwt"), passport.authenticate("jwt", {session: false}), (req, res) => {
+app.get("/current", passportCall("jwt"), authorization("user"), passport.authenticate("jwt", {session: false}), (req, res) => {
     res.send(req.user);
 });
 

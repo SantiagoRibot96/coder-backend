@@ -145,5 +145,6 @@ MongoDB
 ## Clase 12
 - JWT con localStorage
 - JWT con cookies
+- Privilegios de usuarios
 - Passport avanzado y JWT
 - Router avanzado
