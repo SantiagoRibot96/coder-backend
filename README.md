@@ -148,3 +148,12 @@ MongoDB
 - Privilegios de usuarios
 - Passport avanzado y JWT
 - Router avanzado
+
+## Clase 13
+- Repaso y practica integradora de JWT
+- Proceso principal del servidor
+- Manejo de argumentos por consola
+- Proceso global
+- Child process
+- Variables de entorno
+- Listener
