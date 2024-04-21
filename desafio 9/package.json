@@ -1,0 +1,35 @@
+{
+  "type": "module",
+  "name": "deploy",
+  "description": "ProductManager es una clase que cuenta con tres metodos:\r - getProducts(): Obtiene los productos existentes;\r - addProduct(titulo, descripcion, precio, url, codigo, stock): Agrega un nuevo producto con los parametros pasados. En caso de que falte alguno, arroja error. En caso que el codigo se repita con otro producto, tambien arroja error. A cada producto le asigna un Id correlativo. Retorna true o false dependiendo si pudo ejecutar la operacion;\r - getProducts(id): Busca dentro de los productos existentes uno con el Id solicitado. En caso de encontrarlo retorna el producto, en caso contrario retorna un error.\r - readProductsFromFile(): Busca dentro del archivo en this.path (Direccion a cargar en la instanciacion de la clase)\r - saveProductsToFile(prod): Guarda dentro del archivo en this.path\r - deleteProduct(id): Borra el producto con el id correspondiente\r - upgradeProduct(id, newProduct): Actualiza un producto del id correspondiente. NewProduct debe ser un objeto completo.",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.1",
+    "mongoose-paginate-v2": "^1.8.0",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "session-file-store": "^1.5.0",
+    "socket.io": "^4.7.4"
+  }
+}
