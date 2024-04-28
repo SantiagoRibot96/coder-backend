@@ -157,3 +157,10 @@ MongoDB
 - Child process
 - Variables de entorno
 - Listener
+
+## Clase 14
+- Modelo de capas - Separar por responsabilidades
+- Separacion del proyecto
+- Orden del proyecto
+- Sigleton
+- Buenas practicas de programacion

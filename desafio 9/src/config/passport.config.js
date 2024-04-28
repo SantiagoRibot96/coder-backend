@@ -1,7 +1,6 @@
 import passport from "passport";
 import GitHubStrategy from "passport-github2";
 import jwt from "passport-jwt";
-import jsonwebtoken from "jsonwebtoken";
 
 import UserModel from "../models/user.model.js";
 import { newCartList } from "../app.js";
