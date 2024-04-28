@@ -13,4 +13,5 @@ const configObject = {
     mongo_url: process.env.MONGO_URL
 }
 
+console.log(configObject.port);
 export default configObject;
