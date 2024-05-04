@@ -50,3 +50,9 @@
 - Sessions
 - Login con passport
 - Login con passport-github2
+- Refactorizado de la app
+- Trabajo por capas
+- Variables de entorno con dotenv
+- Hasheo de Pass con BCrypt
+- Cookies
+- Json Web Token

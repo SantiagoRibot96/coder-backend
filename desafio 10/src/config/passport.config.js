@@ -2,7 +2,6 @@ import passport from "passport";
 import GitHubStrategy from "passport-github2";
 import jwt from "passport-jwt";
 
-import UserModel from "../models/user.model.js";
 import UserService from "../services/users.services.js";
 import configObject from "./config.js";
 
@@ -27,15 +26,9 @@ const initializePassport = () => {
                 age: 36
             }
 
-            let token;
-
-            await userService.findUser(user.email) ? 
-                token = await userService.validateUser(user.email, user.password):
-                token = await userService.registerUser(user.first_name, user.last_name, user.email, user.password, user.age);
-
-            done(null, token);
+            return done(null, user);
         } catch (error) {
-            done(error);
+            return done(error);
         }
     }));
 
@@ -54,12 +47,11 @@ const initializePassport = () => {
     }));
 
     passport.serializeUser((user, done) => {
-        done(null, user._id);
+        return done(null, user);
     });
 
-    passport.deserializeUser(async (id, done) => {
-        let user = await UserModel.findById({_id: id});
-        done(null, user);
+    passport.deserializeUser((user, done) => {
+        return done(null, user);
     });
 }
 

@@ -1,6 +1,5 @@
 import UserService from "../services/users.services.js";
 import configObject from "../config/config.js";
-import jwt from "jsonwebtoken";
 
 const { cookie, token_pass } = configObject;
 const userService = new UserService();
@@ -41,7 +40,13 @@ class UserController {
 
     async githubToken(req, res) {
         try {
-            res.cookie(cookie, req.user.token, {
+            let token;
+
+            await userService.findUser(req.user.email) ? 
+                token = await userService.validateUser(req.user.email, req.user.password):
+                token = await userService.registerUser(req.user.first_name, req.user.last_name, req.user.email, req.user.password, req.user.age);
+
+            res.cookie(cookie, token, {
                 maxAge: 3600000,
                 httpOnly: true
             });

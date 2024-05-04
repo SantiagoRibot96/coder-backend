@@ -164,3 +164,8 @@ MongoDB
 - Orden del proyecto
 - Sigleton
 - Buenas practicas de programacion
+
+## Clase 15
+- DAO
+- Patron de diseño "Factory"
+- DTO
