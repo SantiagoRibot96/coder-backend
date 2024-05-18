@@ -169,3 +169,11 @@ MongoDB
 - DAO
 - Patron de diseño "Factory"
 - DTO
+- Nuevo projecto de cero
+- Coneccion back y front
+
+# Clase 16
+- Mailing - Protocolo SMTP
+- Modulo NodeMailer
+- Modelo Twilio - Whatsapp y SMS
+- Test y Moks - TDD
