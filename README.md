@@ -177,3 +177,11 @@ MongoDB
 - Modulo NodeMailer
 - Modelo Twilio - Whatsapp y SMS
 - Test y Moks - TDD
+
+# Clase 17
+- Optimizacion del servidor
+- Compresion GZIP y Brotli
+- Loggeo de errores
+- NVM
+- Administradores de paquetes
+- Crear dependencia NPM
