@@ -185,3 +185,20 @@ MongoDB
 - NVM
 - Administradores de paquetes
 - Crear dependencia NPM
+
+# Clase 18
+- Loggeo de errores
+- Winston
+- Testing
+- Artillery
+- Performance
+- Docker desktop
+
+# Clase 19
+- Seguridad de la pagina
+- Documentacion con Swagger
+
+# Clase 20
+- DocketHub
+- Orquestacion de contenedores
+- Orquestacion con kubernetes
